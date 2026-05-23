@@ -33,20 +33,33 @@
         </div>
         <ul class="todo-list">
           <template x-for="item in todos">
-            <li :data-id="item.id" :class="{completed: item.completed}">
+            <li
+              :data-id="item.id"
+              :class="{completed: item.completed, editing: item.isEdited}"
+            >
+              <!--Modification d'un item-->
               <div class="view">
                 <input
                   class="toggle"
                   type="checkbox"
                   x-model="item.completed"
                 />
-                <label x-text="item.content"></label
-                ><button
+                <label
+                  x-text="item.content"
+                  @dblclick="item.isEdited = true"
+                ></label>
+                <!--Modification d'un item-->
+                <button
                   class="destroy"
                   @click.prevent="deleteItem(item)"
                 ></button>
               </div>
-              <input class="edit" />
+              <input
+                class="edit"
+                x-model="item.content"
+                @change="item.isEdited = false"
+              />
+              <!--Modification d'un item-->
             </li>
           </template>
         </ul>

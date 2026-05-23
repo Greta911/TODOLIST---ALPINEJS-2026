@@ -32,5 +32,6 @@ function todoApp () {
         deleteItem(todo) {
         this.todos = this.todos.filter((item) => item != todo);
         },
+
     };  
 }
