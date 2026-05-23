@@ -28,5 +28,9 @@ function todoApp () {
             });
             this.newItemContent= "";
         },
-    };
+    //Suppression d'un item
+        deleteItem(todo) {
+        this.todos = this.todos.filter((item) => item != todo);
+        },
+    };  
 }
