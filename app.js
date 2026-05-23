@@ -8,6 +8,10 @@ function todoApp () {
     return {
         todos: JSON.parse(localStorage.todos) || [],
         newItemContent: "",
+
+        notCompletedCount () {
+            return this.todos.filter(item => !item.completed).length + " item(s) left";
+        },
     //Observe toute modification de la data todos
     watcher () {
     this.$watch("todos", (newValue, oldValue) => {
